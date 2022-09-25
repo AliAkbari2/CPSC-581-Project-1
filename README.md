@@ -16,8 +16,8 @@ Overall description: https://docs.google.com/document/d/1wJgYGwsGiKAoi3-YB1NwXCc
 The portfolio needs to include:  
 
 ~~Overall description~~  
-10 sketches for concept  
-Write-up for the concept sketches  
+~~10 sketches for concept~~  
+~~Write-up for the concept sketches~~  
 10 sketches for detail  
 Write-up for detailed sketches  
 Video embedded in the website (e.g. YouTube, Vimeo, etc)  
