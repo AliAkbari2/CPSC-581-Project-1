@@ -6,6 +6,8 @@ Current DevLink: https://glitch.com/edit/#!/cpsc-581-project-1?path=index.html%3
 
 Current Website Link: https://cpsc-581-project-1.glitch.me/
 
+Overall description: https://docs.google.com/document/d/1wJgYGwsGiKAoi3-YB1NwXCc5at5GX1B_07HBGhCIU2U/edit?usp=sharing
+
 
 # Hello website!
 
