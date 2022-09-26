@@ -18,8 +18,8 @@ The portfolio needs to include:
 ~~Overall description~~  
 ~~10 sketches for concept~~  
 ~~Write-up for the concept sketches~~  
-10 sketches for detail  
-Write-up for detailed sketches  
+~~10 sketches for detail~~  
+~~Write-up for detailed sketches~~  
 Video embedded in the website (e.g. YouTube, Vimeo, etc)  
 URL to source code if any (Glitch link, GitHub repo link, GitHub Gist, etc)  
 
