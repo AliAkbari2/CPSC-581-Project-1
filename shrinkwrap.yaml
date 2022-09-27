@@ -1,0 +1,14 @@
+dependencies:
+  date-fns: 2.29.3
+packages:
+  /date-fns/2.29.3:
+    dev: false
+    engines:
+      node: '>=0.11'
+    resolution:
+      integrity: sha512-dDCnyH2WnnKusqvZZ6+jA1O51Ibt8ZMRNkDZdyAyK4YfbDwa/cEmuztzG5pk6hqlp9aSBPYcjOlktquahGwGeA==
+registry: 'https://registry.npmjs.org/'
+shrinkwrapMinorVersion: 9
+shrinkwrapVersion: 3
+specifiers:
+  date-fns: ^2.29.3
