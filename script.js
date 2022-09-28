@@ -4,14 +4,14 @@ const start = document.getElementById("startbtn");  //Start button
 const btn = document.getElementById("ctrbtn");  //Incremental button
 start.onclick = startSession;
 let ctr = 0;  //The counter for how many times the button is pressed
-btn.onclick = clickCounter; //When the button is clicked, increment the button
+btn.onclick = clickCounter2; //When the button is clicked, increment the counter
 
 //this is just for testing, it'll be removed later when the program actually stops manually.
 const clickThreshold = 100;
 
 console.log(localStorage.clickcount);
 
-if (localStorage.clickcount != 0 || localStorage.clickcount == undefined) {
+if (localStorage.clickcount != 0 || localStorage.clickcount === undefined) {
     btn.style.display = "initial";
     start.style.display = "none";
   } else {
@@ -28,38 +28,43 @@ function startSession() {
   console.log(localStorage.startTime);
 }
 
-//This function counts the number of clicks and keeps it stored.
-function clickCounter() 
-{
-  if (typeof(Storage) !== "undefined") 
-  {
-    if (localStorage.clickcount < clickThreshold) 
-    {
-      localStorage.clickcount = Number(localStorage.clickcount)+1;
-      console.log("You have clicked the button " + localStorage.clickcount + " time(s).");
-      if(localStorage.clickcount == clickThreshold)
-        {
-          //After the experiment ends
-          document.getElementById("result-message").textContent="You have now clicked the button " + localStorage.clickcount + " time(s)!";
-          let endTime = Date.now();
-          console.log(((endTime - localStorage.startTime) / 1000));
-          calcResults((endTime - localStorage.startTime) / 1000)
-          
-          btn.style.display = "none";
-          start.style.display = "initial";
-        }
-    } 
-    else 
-    {
-      localStorage.clickcount = 1;
-      console.log("You have clicked the button " + localStorage.clickcount + " time(s).");
-    }
-  } 
-  else 
-  {
-    console.log("Sorry, your browser does not support web storage...");
-  }
+
+function clickCounter2() {
+  localStorage.clickcount++; 
 }
+
+// //This function counts the number of clicks and keeps it stored.
+// function clickCounter() 
+// {
+//   if (typeof(Storage) !== "undefined") 
+//   {
+//     if (localStorage.clickcount < clickThreshold) 
+//     {
+//       localStorage.clickcount = Number(localStorage.clickcount)+1;
+//       console.log("You have clicked the button " + localStorage.clickcount + " time(s).");
+//       if(localStorage.clickcount == clickThreshold)
+//         {
+//           //After the experiment ends
+//           document.getElementById("result-message").textContent="You have now clicked the button " + localStorage.clickcount + " time(s)!";
+//           let endTime = Date.now();
+//           console.log(((endTime - localStorage.startTime) / 1000));
+//           calcResults((endTime - localStorage.startTime) / 1000)
+          
+//           btn.style.display = "none";
+//           start.style.display = "initial";
+//         }
+//     } 
+//     else 
+//     {
+//       localStorage.clickcount = 1;
+//       console.log("You have clicked the button " + localStorage.clickcount + " time(s).");
+//     }
+//   } 
+//   else 
+//   {
+//     console.log("Sorry, your browser does not support web storage...");
+//   }
+// }
 
 
 /////////////////////////
@@ -146,24 +151,26 @@ if (resetBtn) {
 ///////////////////////////////////
 //This function will calculate the results for the user.
 //For the sake of testing and the demo, I will make it so that the user should only press the button
-//Once every 30 seconds, but must at least press the button every 180 seconds.
+//Once every 15 seconds, but must at least press the button every 60 seconds.
 //E.g., if their total time is 60 seconds, then if they pressed the button more than 2 times, then they
 //Will get the result: "Spoiling too much"
 function calcResults(totalTime) {
   console.log("Calculating Results");
-  let maxPresses = Math.ceil(totalTime/30); //They must not go over this many presses.
-  let minPresses = Math.floor(totalTime/180); //They must click the button at least this many times.
+  let maxValue = 7200  //This value dictates how many times the user may click the button to get a good result. Value is in seconds. For testing purposes, try value 15 (15 seconds)
+  let minValue = 10800  //This value dictates the threshold on how many times the user must click the button to get a good result. Value is in seconds. For testing purposes, try value 60 (60 seconds)
+  let maxPresses = Math.ceil(totalTime/maxValue); //They must not go over this many presses.
+  let minPresses = Math.floor(totalTime/minValue); //They must click the button at least this many times. 
   console.log(localStorage.clickcount);
   console.log("Max Presses:" + maxPresses);
   console.log("Min Presses:" + minPresses);
   //If the maximumpresses is larger, and minpresses is smaller than how much they actually clicked
   if (maxPresses >= localStorage.clickcount && minPresses <= localStorage.clickcount) {
-    document.getElementById("result-message").textContent="Result: Doing well";
+    document.getElementById("msg1").textContent="Result: You're doing well! You are within the bounds for what we believe to be in good moderation. \r\n \r\n Be aware that your result is just an estimate. \r\n \r\n It is completely fine to spoil your child occaisionally, and it is ultimately your final choice to decide when to give to them. \r\n \r\n It is important that a child grows up to be independent, but also know that they have someone to help them in times of need. \r\n \r\n Results: \r\n Button Clicks: " + localStorage.clickcount + "\r\n Total Session Time: " + "1" + " hours.";
   } else if (maxPresses < localStorage.clickcount) {
-    document.getElementById("result-message").textContent="Result: Caution, give in moderation.";
+    document.getElementById("msg1").textContent="Result: Be careful. You may be giving your child a bit too much, we noticed a large number of clicks for this session. \r\n \r\n It is important that people receive things in moderation, as they must know how to grow up to be independent and hard working. \r\n \r\n If you have trouble giving in moderation, try techniques to build trust between you and your child, as it will make it easier for them to understand why sometimes you have to say no to certain requests. \r\n \r\n Be aware that your result is just an estimate. We understand that some days you just spoil your child a bit more. That's completely fine, it is ultimately your final choice to decide when to give to them. \r\n \r\n Results: \r\n Button Clicks: " + localStorage.clickcount + "\r\n Total Session Time: " + "1" + " hours"; 
   } else if (minPresses > localStorage.clickcount) {
-    document.getElementById("result-message").textContent="Result: Don't neglect. Give occaisonally";
+    document.getElementById("msg1").textContent="Result: Be careful. You may not be giving your child enough. It seems that there is very little button clicks for your session. Its important not to spoil a child, but its also important that they think of you as someone they can rely on when they need help, or need something that cannot get themselves. \r\n \r\n This way, they will grow to be independent, but also know that there is someone they can trust when they need something out of their control. \r\n \r\n It is important to have moderation in both. \r\n \r\n Be aware that your result is just an estimate. We understand that sometimes your child must be disciplined a bit more strictly, it is ultimately your final choice to decide when to give to them. \r\n \r\n Results: \r\n Button Clicks: " + localStorage.clickcount + "\r\n Total Session Time: " + "1" + " hours"
   } else {
-    document.getElementById("result-message").textContent="Error in calculating results.";
+    document.getElementById("msg1").textContent="Error in calculating results.";
   }
 }

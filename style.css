@@ -84,10 +84,6 @@ body {
   margin:auto;
   justify-content:center;
   background-color: #8ee7f0 ;
-/*   padding-top:40px;
-  padding-bottom:40px; */
-/*   padding-right:150px;
-  padding-left:150px; */
   min-height:60vh;
   font-family:'Trebuchet MS', sans-serif;
   font-weight:bold;
@@ -104,10 +100,12 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+  
 }
 
 .mainbtn:active {
   transform: translateY(8px);
+  color:white;
 }
 
 #ctrbtn {
@@ -131,11 +129,18 @@ body {
 /* Modal Content */
 .modal-content {
   color: white;
-  background-color: #000000;
+  background-color:  #2b9ed3 ;
   margin: auto;
   padding: 20px;
   border: 1px solid #888888;
   width: 80%;
+  font-family: 'Trebuchet MS', sans-serif;
+  font-weight: bold;
+  font-size: 25px;
+  align-content: center;
+  border: 10px solid black;
+  border-radius: 50px;
+  white-space: pre-line;
 }
 
 /* The Close Button */
