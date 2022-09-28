@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Psychological Button</title>
+    <title>Moderation Button</title>
     <link rel="stylesheet" href="/style.css" />
     <script src="/script.js" defer></script>
   </head>
@@ -9,9 +9,9 @@
     <div class="flex-container">
       <header class="header">Moderation Button</header>
       <div class="main-section">
-        <button class="mainbtn unselectable" id="startbtn">Start Session</button>
+        <button class="unselectable mainbtn" id="startbtn">Start Session</button>
 
-        <button class="mainbtn unselectable" id="ctrbtn">Click To Record <br/> (Hold down 3 seconds to reset)</button>
+        <button class="unselectable mainbtn" id="ctrbtn">Click To Record <br/> (Hold down 3 seconds to reset)</button>
       </div>
 
       <footer class="footer">
@@ -23,9 +23,9 @@
     <div id="result-modal" class="modal">
       <div class="modal-content">
         <span class="close">&times;</span>
-        <p>You have Reseted the Session.</p>
-        <p id="result-message">
-          Result is: 
+        <p>You have Reset the Session.</p>
+        <p class="result-message" id="msg1">
+          Result:
         </p>
       </div>
     </div>
